@@ -1,4 +1,4 @@
-# Setup moodle thử công
+# Setup moodle thủ công
 * Truy cập vào folder moodle
 
 1. Copy file .env và tiến hành cấu hình các biến cần thiết trong file .env
