@@ -1,0 +1,42 @@
+version: "2"
+services:
+  lms:
+    image: moodlehq/moodle-php-apache:7.4
+    restart: always
+    ports:
+      - ${MOODLE_DOCKER_WEB_PORT}:80
+      - ${MOODLE_DOCKER_WEB_SSL_PORT}:443
+    volumes:
+      - ${MOODLE_DOCKER_MOODLE}:/var/www/html
+      - ${MOODLE_DOCKER_MOODLEDATA}:/var/www/moodledata
+    environment:
+      MOODLE_DOCKER_DBHOSTNAME: "${MOODLE_DOCKER_DBHOSTNAME}"
+      MOODLE_DOCKER_DBNAME: "${MOODLE_DOCKER_DBNAME}"
+      MOODLE_DOCKER_DBUSER: "${MOODLE_DOCKER_DBUSER}"
+      MOODLE_DOCKER_DBPASS: "${MOODLE_DOCKER_DBPASS}"
+      MOODLE_DOCKER_WEB_HOST: "${MOODLE_DOCKER_WEB_HOST}"
+      MOODLE_DOCKER_WEB_PORT: "${MOODLE_DOCKER_WEB_PORT}"
+      MOODLE_DOCKER_WEB_SITETYPE: "${MOODLE_DOCKER_WEB_SITETYPE}"
+    networks:
+      - lms
+  mongo:
+    image: mongo:4
+    restart: unless-stopped
+    volumes:
+        - ./data/mongo:/data/db
+    networks:
+        - lms
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+        - '6379:6379'
+    volumes:
+        - ./data/redis:/data
+    networks:
+        - lms
+volumes:
+  lms-data:
+networks:
+  lms:
+    driver: bridge
