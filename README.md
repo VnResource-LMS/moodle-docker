@@ -47,3 +47,8 @@ docker-compose up -d
 git clone https://github.com/adlnet/learninglocker-docker learninglocker
 ```
 2. Truy cập vào folder learninglocker và xem file README.md để được hướng dẫn
+
+# Tài liệu hướng dẫn sử dụng kỹ thuật Moodle
+```
+https://docs.google.com/document/d/1faS3pJzwSamiI_iYEZ4KUtSazkd973KG/edit?usp=sharing&ouid=101094468371402780971&rtpof=true&sd=true
+```
