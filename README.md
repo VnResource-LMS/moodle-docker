@@ -16,7 +16,7 @@ git clone --branch MOODLE311_STABLE --depth 1 --single-branch https://github.com
 3. Sau khi get source thành công tiến hành copy file config vào sourcre. Tiến hành kiểm tra lại file .env xem đã chỉnh sửa hay chưa
 Để copy file config vào source làm theo câu lệnh bên dưới(Lưu ý: Để thực hiện câu lệnh phải đứng ở thư mục moodle)
 ```
-cp config.docker-template.php /source/config.php
+cp config.docker-template.php source/config.php
 ```
 
 # Setup moodle tự động
