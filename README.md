@@ -3,20 +3,20 @@
 
 1. Copy file .env và tiến hành cấu hình các biến cần thiết trong file .env
 ```
-cp .env.example $pwd/moodle/.env
+cp .env.example .env
 ```
 
 2. Tiến hành get source LMS từ git về local theo hướng dẫn bên dưới
+Lưu ý: Phải có tài khoản github
 ```
 cd moodle
 git clone --branch MOODLE311_STABLE --depth 1 --single-branch https://github.com/kietchungvnr/MOODLE_37.git source
 ```
 
-3. Sau khi get source thành công tiến hành copy file config vào source, sau copy file config thì mở vào source chỉnh sửa lại cấu hình của file config, nhưng dòng nào mô tả được phép chỉnh sửa thì sửa trên dòng đó:
-   Ex: dbhost, dbname, wwwroot, dataroot, etc... 
+3. Sau khi get source thành công tiến hành copy file config vào sourcre. Tiến hành kiểm tra lại file .env xem đã chỉnh sửa hay chưa
 Để copy file config vào source làm theo câu lệnh bên dưới(Lưu ý: Để thực hiện câu lệnh phải đứng ở thư mục moodle)
 ```
-cp config.docker-template.php $pwd/moodle/source/config.php
+cp config.docker-template.php /source/config.php
 ```
 
 # Setup moodle tự động
