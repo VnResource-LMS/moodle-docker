@@ -30,12 +30,18 @@ Khi setup xong thì phải cấu hình file .env
 # Sau khi setup moodle bằng 1 trong 2 cách trên gõ lên bên dưới để tiến hành build LMS
 Đối với lần đầu build thì chạy câu lệnh:
 ```
-docker-compose up --build -d
+sudo docker-compose up --build -d
 ```
 
 Đối với việc muốn update lại file .env thì chạy câu lệnh:
 ```
-docker-compose up -d
+sudo docker-compose up -d
+```
+
+* Đối với source và moodledata phải phân quyền cho thư mục chạy câu lệnh:
+```
+sudo chmod 777 source
+sudo chmod 777 moodledata
 ```
 
 # Setup learninglocker(xAPI)
