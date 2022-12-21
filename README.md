@@ -32,8 +32,8 @@ sudo docker-compose up -d
 
 * Đối với source và moodledata phải phân quyền cho thư mục chạy câu lệnh:
 ```
-sudo chmod 777 [Đường dẫn source]
-sudo chmod 777 [Đường dẫn moodledata]
+sudo chmod -R 777 [Đường dẫn source]
+sudo chmod -R 777 [Đường dẫn moodledata]
 ```
 
 # Setup portainer để quản trị Docker sử dụng UI
@@ -44,7 +44,7 @@ sudo docker volume create portainer_data
 ```
 2. Tạo container cho portainer
 ```
-sudo docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v portainer_data:/data portainer/portainer-ce:latest
+sudo docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v portainer_data:/data portainer/portainer-ce:2.9.3
 ```
 
 # Setup learninglocker(xAPI)
