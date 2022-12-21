@@ -9,6 +9,9 @@ services:
     volumes:
       - ${MOODLE_DOCKER_MOODLE}:/var/www/html
       - ${MOODLE_DOCKER_MOODLEDATA}:/var/www/moodledata
+      - ${APACHE_SSL}:/etc/ssl/moodle
+      - ${APACHE_SSL_CONFIG}:/etc/apache2/sites-available/default-ssl.conf
+      - ${PHP_INI}:/usr/local/etc/php/conf.d/docker-php-moodle.ini
     environment:
       MOODLE_DOCKER_DBHOSTNAME: "${MOODLE_DOCKER_DBHOSTNAME}"
       MOODLE_DOCKER_DBNAME: "${MOODLE_DOCKER_DBNAME}"
@@ -19,22 +22,6 @@ services:
       MOODLE_DOCKER_WEB_SITETYPE: "${MOODLE_DOCKER_WEB_SITETYPE}"
     networks:
       - lms
-  mongo:
-    image: mongo:4
-    restart: unless-stopped
-    volumes:
-        - ./data/mongo:/data/db
-    networks:
-        - lms
-  redis:
-    image: redis:7-alpine
-    restart: unless-stopped
-    ports:
-        - '6379:6379'
-    volumes:
-        - ./data/redis:/data
-    networks:
-        - lms
 volumes:
   lms-data:
 networks:

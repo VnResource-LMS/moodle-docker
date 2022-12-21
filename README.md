@@ -1,33 +1,25 @@
-# Setup moodle thủ công
-* Truy cập vào folder moodle
+# Lưu ý: Phải Get repository MOOELLE-DOCKER-VNR
 
+# Setup moodle
 1. Copy file .env và tiến hành cấu hình các biến cần thiết trong file .env
 ```
-cp .env.example .env
+cp ./config/templates/.env.example .env
 ```
 
 2. Tiến hành get source LMS từ git về local theo hướng dẫn bên dưới
-Lưu ý: Phải có tài khoản github
+Lưu ý: Phải có tài khoản github và tạo có personal access token
 ```
-cd moodle
-git clone --branch MOODLE311_STABLE --depth 1 --single-branch https://github.com/kietchungvnr/MOODLE_37.git source
+cd [Đến thư mục project]
+git clone --branch [Branch mong muốn EX:(MOODLE311_STABLE)] --single-branch https://github.com/kietchungvnr/MOODLE_37.git source
 ```
 
 3. Sau khi get source thành công tiến hành copy file config vào sourcre. Tiến hành kiểm tra lại file .env xem đã chỉnh sửa hay chưa
-Để copy file config vào source làm theo câu lệnh bên dưới(Lưu ý: Để thực hiện câu lệnh phải đứng ở thư mục moodle)
+Để copy file config vào source làm theo câu lệnh bên dưới
 ```
-cp config.docker-template.php source/config.php
+cp ./config/templates/config.docker-template.php [Đường dẫn chưa source]
 ```
 
-# Setup moodle tự động
-* Truy cập vào folder moodle, chỉ click vào file setup.bat một lần. Nếu muốn setup lại thì phải xóa folder source
-Để setup tự động click vào file
-```
-setup.bat
-```
-Khi setup xong thì phải cấu hình file .env
-
-# Sau khi setup moodle bằng 1 trong 2 cách trên gõ lên bên dưới để tiến hành build LMS
+# Sau khi setup moodle o trên gõ lên bên dưới để tiến hành build LMS
 Đối với lần đầu build thì chạy câu lệnh:
 ```
 sudo docker-compose up --build -d
@@ -40,8 +32,19 @@ sudo docker-compose up -d
 
 * Đối với source và moodledata phải phân quyền cho thư mục chạy câu lệnh:
 ```
-sudo chmod 777 source
-sudo chmod 777 moodledata
+sudo chmod 777 [Đường dẫn source]
+sudo chmod 777 [Đường dẫn moodledata]
+```
+
+# Setup portainer để quản trị Docker sử dụng UI
+
+1. Tạo volume
+```
+sudo docker volume create portainer_data
+```
+2. Tạo container cho portainer
+```
+sudo docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart=always -v portainer_data:/data portainer/portainer-ce:latest
 ```
 
 # Setup learninglocker(xAPI)
