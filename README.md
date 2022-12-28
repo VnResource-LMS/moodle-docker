@@ -22,12 +22,12 @@ cp ./config/templates/config.docker-template.php [Đường dẫn chưa source]
 # Sau khi setup moodle o trên gõ lên bên dưới để tiến hành build LMS
 Đối với lần đầu build thì chạy câu lệnh:
 ```
-sudo docker-compose up --build -d
+sudo docker compose up --build -d
 ```
 
 Đối với việc muốn update lại file .env thì chạy câu lệnh:
 ```
-sudo docker-compose up -d
+sudo docker compose up -d
 ```
 
 * Đối với source và moodledata phải phân quyền cho thư mục chạy câu lệnh:
