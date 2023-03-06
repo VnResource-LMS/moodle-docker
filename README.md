@@ -10,7 +10,7 @@ cp ./config/templates/.env.example .env
 Lưu ý: Phải có tài khoản github và tạo có personal access token
 ```
 cd [Đến thư mục project]
-git clone --branch [Branch mong muốn EX:(MOODLE311_STABLE)] --single-branch https://github.com/kietchungvnr/MOODLE_37.git source
+git clone --branch [master hoặc Branch mong muốn] https://github.com/kietchungvnr/MOODLE_37.git source
 ```
 
 3. Sau khi get source thành công tiến hành copy file config vào sourcre. Tiến hành kiểm tra lại file .env xem đã chỉnh sửa hay chưa
