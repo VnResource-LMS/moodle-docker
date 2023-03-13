@@ -22,11 +22,12 @@ cp ./config/templates/config.docker-template.php [Đường dẫn chưa source]
 # Setup ssl cho LMS
 1. Copy chứng chỉ ssl vào /config/apache/ssl
 * Lưu ý: Chứng chỉ ssl phải gồm 2 file .crt và .key
-2. Tiến hành cấu hình tên ssl cho file default-ssl.còn ở đường dẫn: 
+2. Tiến hành cấu hình tên ssl cho file default-ssl.conf ở đường dẫn: 
 config/apache/default-ssl.conf
 Đổi tên file ở 2 dòng SSLCertificateFile và SSLCertificateKeyFile tương ứng với tên chứng chỉ ssl
 
 Ví dụ:
+Cấu hình 2 file ssl: vnr.crt và vnr.key thì làm như sau:
 ```     
 SSLCertificateFile	/etc/ssl/moodle/vnr.crt
 SSLCertificateKeyFile /etc/ssl/moodle/vnr.key
