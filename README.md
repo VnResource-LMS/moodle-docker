@@ -19,7 +19,26 @@ git clone --branch [master hoặc Branch mong muốn] https://github.com/kietchu
 cp ./config/templates/config.docker-template.php [Đường dẫn chưa source]
 ```
 
-# Sau khi setup moodle o trên gõ lên bên dưới để tiến hành build LMS
+# Setup ssl cho LMS
+1. Copy chứng chỉ ssl vào /config/apache/ssl
+* Lưu ý: Chứng chỉ ssl phải gồm 2 file .crt và .key
+2. Tiến hành cấu hình tên ssl cho file default-ssl.còn ở đường dẫn: 
+config/apache/default-ssl.conf
+Đổi tên file ở 2 dòng SSLCertificateFile và SSLCertificateKeyFile tương ứng với tên chứng chỉ ssl
+
+Ví dụ:
+```     
+SSLCertificateFile	/etc/ssl/moodle/vnr.crt
+SSLCertificateKeyFile /etc/ssl/moodle/vnr.key
+```
+
+* Lưu ý: Chỉ đổi tên file ssl:
+```
+[Tên chứng chỉ].crt
+[Tên chứng chỉ].key
+```
+
+# Sau khi setup moodle ở trên gõ lên bên dưới để tiến hành build LMS
 Đối với lần đầu build thì chạy câu lệnh:
 ```
 sudo docker compose up --build -d
